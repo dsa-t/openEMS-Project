@@ -38,13 +38,19 @@ jobs:
 
       - run: df -h /
 
-      - name: Set environment variables
+      - name: Set environment variables (Windows)
+        if: runner.os == 'Windows'
+        run: |
+          echo "BUILD_ARGS=-j8" | Out-File -FilePath $env:GITHUB_ENV -Append
+
+      - name: Set environment variables (Unix)
+        if: runner.os != 'Windows'
         run: |
           PROC_COUNT=8
 
           if [ "${{ matrix.cmake_generator }}" == "Xcode" ]; then
               # Xcode generates a lot of output, suppress it so only warnings and errors are visible
-              BUILD_ARGS="-jobs $PROC_COUNT -quiet"
+              BUILD_ARGS="-j$PROC_COUNT -quiet"
           else
               BUILD_ARGS=-j$PROC_COUNT
           fi
