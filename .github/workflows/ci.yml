@@ -50,9 +50,9 @@ jobs:
 
           if [ "${{ matrix.cmake_generator }}" == "Xcode" ]; then
               # Xcode generates a lot of output, suppress it so only warnings and errors are visible
-              BUILD_ARGS="-j$PROC_COUNT -quiet"
+              BUILD_ARGS="-j$PROC_COUNT"
           else
-              BUILD_ARGS=-j$PROC_COUNT
+              BUILD_ARGS="-j$PROC_COUNT"
           fi
 
           echo BUILD_ARGS=$BUILD_ARGS >> $GITHUB_ENV
