@@ -63,6 +63,7 @@ jobs:
           cmake -G "${{ matrix.cmake_generator }}" ${{ matrix.cmake_defines }}  ..
 
       - name: "Building"
+        working-directory: build_cmake
         run: |
           cmake --build . $BUILD_ARGS
 
