@@ -19,27 +19,22 @@ jobs:
           - name: Ubuntu 22.04 x64
             runner: ubuntu-22.04
             cmake_generator: Unix Makefiles
-            cmake_defines: "-DCMAKE_INSTALL_PREFIX=${{ github.workspace }}/openems-install"
           - name: Ubuntu 22.04 ARM
             runner: ubuntu-22.04-arm
             cmake_generator: Ninja
-            cmake_defines: "-DCMAKE_INSTALL_PREFIX=${{ github.workspace }}/openems-install"
           - name: Ubuntu 24.04 x64
             runner: ubuntu-24.04
             cmake_generator: Unix Makefiles
-            cmake_defines: "-DCMAKE_INSTALL_PREFIX=${{ github.workspace }}/openems-install"
           - name: Ubuntu 24.04 ARM
             runner: ubuntu-24.04-arm
             cmake_generator: Ninja
-            cmake_defines: "-DCMAKE_INSTALL_PREFIX=${{ github.workspace }}/openems-install"
           - name: macOS 14
             runner: macos-14
             cmake_generator: Xcode
-            cmake_defines: "-DCMAKE_INSTALL_PREFIX=${{ github.workspace }}/openems-install"
           - name: Windows MSVC
             runner: windows-latest
             no_sudo: 1
-            cmake_defines: "-DCMAKE_C_COMPILER=cl.exe -DCMAKE_CXX_COMPILER=cl.exe -DCMAKE_INSTALL_PREFIX=${{ github.workspace }}/openems-install"
+            cmake_defines: -DCMAKE_C_COMPILER=cl.exe -DCMAKE_CXX_COMPILER=cl.exe
             cmake_generator: Ninja
 
     steps:
@@ -78,7 +73,7 @@ jobs:
           cmake --version
           mkdir build_cmake
           pushd build_cmake
-          cmake -G "${{ matrix.cmake_generator }}" ${{ matrix.cmake_defines }}  ..
+          cmake -G "${{ matrix.cmake_generator }}" -DCMAKE_INSTALL_PREFIX=${{ github.workspace }}/openems-install ${{ matrix.cmake_defines }}  ..
 
       - name: "Building"
         working-directory: build_cmake
