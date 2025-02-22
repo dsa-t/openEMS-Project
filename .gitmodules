@@ -34,3 +34,6 @@
 [submodule "cgal"]
 	path = cgal
 	url = https://github.com/CGAL/cgal.git
+[submodule "tinyxml"]
+	path = tinyxml
+	url = https://github.com/dsa-t/TinyXML.git
