@@ -1,3 +1,26 @@
+# Installation with vcpkg
+
+## Windows
+
+### Requirements
+- Visual Studio 2022 with CMake and Ninja
+- Git
+
+### Commands in "Developer Command Prompt for VS 2022"
+
+```batch
+git config checkout.workers -1
+git clone --recurse-submodules --shallow-submodules https://github.com/dsa-t/openEMS-Project --branch custom --depth 1 -j 16
+cd openEMS-Project
+mkdir build
+cd build
+cmake -GNinja -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_INSTALL_PREFIX=C:\Sim\Prefix ..
+cmake --build . --config RelWithDebInfo -j 16
+cmake --install .
+```
+
+---
+
  ![openEMS](https://raw.github.com/thliebig/openEMS-Project/master/other/openEMS.png "openEMS")<br />
 openEMS is a free and open electromagnetic field solver using the FDTD method. Octave/Matlab and Python used as an easy and flexible scripting interface.<br />
 
