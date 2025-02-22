@@ -43,10 +43,11 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Fetch tags
-        run: |
-          git -C CSXCAD fetch --prune --unshallow --tags
-          git -C openEMS fetch --prune --unshallow --tags
+      - name: Fetch tags (CSXCAD)
+        run: git -C CSXCAD fetch --prune --unshallow --tags
+
+      - name: Fetch tags (openEMS)
+        run: git -C openEMS fetch --prune --unshallow --tags
 
       - run: df -h /
 
