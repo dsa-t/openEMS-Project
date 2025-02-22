@@ -19,3 +19,6 @@
 [submodule "CTB"]
 	path = CTB
 	url = https://github.com/thliebig/CTB.git
+[submodule "CTB"]
+	path = tinyxml
+	url = https://github.com/xbmc/TinyXML.git
