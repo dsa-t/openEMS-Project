@@ -91,6 +91,7 @@ jobs:
 
       - name: Upload
         uses: actions/upload-artifact@v4
+        if: success() || failure()
         with:
           name: openems_${{ matrix.runner }}
           path: ${{ github.workspace }}/openems-install
