@@ -1,22 +1,21 @@
-# Installation with vcpkg
+# Installation
 
-## Windows
-
-### Requirements
-- Visual Studio 2022 with CMake and Ninja
+### Requirements for Windows
 - Git
+- Visual Studio 2022 with CMake and Ninja
+- Execute commands in "Developer Command Prompt for VS 2022"
 
-### Commands in "Developer Command Prompt for VS 2022"
+### Commands
 
 ```batch
-git config checkout.workers -1
-git clone --recurse-submodules --shallow-submodules https://github.com/dsa-t/openEMS-Project --branch custom --depth 1 -j 16
+git clone --recurse-submodules --shallow-submodules https://github.com/dsa-t/openEMS-Project --branch custom -j 16
 cd openEMS-Project
+git -C CSXCAD fetch --prune --unshallow --tags
+git -C openEMS fetch --prune --unshallow --tags
 mkdir build
 cd build
 cmake -GNinja -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_INSTALL_PREFIX=C:\Sim\Prefix ..
-cmake --build . --config RelWithDebInfo -j 16
-cmake --install .
+cmake --build . -j 16
 ```
 
 ---
