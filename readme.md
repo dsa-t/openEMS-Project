@@ -3,7 +3,11 @@
 ### Requirements for Windows
 - Git
 - Visual Studio 2022 with CMake and Ninja
-- Execute commands in "Developer Command Prompt for VS 2022"
+
+- Execute commands in "Developer Command Prompt for VS 2022" or run this command in PowerShell:
+```powershell
+& 'C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\Tools\Launch-VsDevShell.ps1' -SkipAutomaticLocation
+```
 
 ### Commands
 
@@ -14,7 +18,7 @@ git -C CSXCAD fetch --prune --unshallow --tags
 git -C openEMS fetch --prune --unshallow --tags
 mkdir build
 cd build
-cmake -GNinja -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_INSTALL_PREFIX=C:\Sim\Prefix ..
+cmake -GNinja -DCMAKE_INSTALL_PREFIX=C:\Sim\Prefix ..
 cmake --build . -j 16
 ```
 
