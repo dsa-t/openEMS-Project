@@ -18,7 +18,16 @@ git -C CSXCAD fetch --prune --unshallow --tags
 git -C openEMS fetch --prune --unshallow --tags
 mkdir build
 cd build
-cmake -GNinja -DCMAKE_INSTALL_PREFIX=C:\Sim\Prefix ..
+
+mkdir Debug
+cd Debug
+cmake -GNinja -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=C:\Sim\Prefix ..
+cmake --build . -j 16
+cd ..
+
+mkdir Release
+cd Release
+cmake -GNinja -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_INSTALL_PREFIX=C:\Sim\Prefix ..
 cmake --build . -j 16
 ```
 
