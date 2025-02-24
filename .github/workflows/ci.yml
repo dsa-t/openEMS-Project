@@ -19,23 +19,29 @@ jobs:
           - name: Ubuntu 22.04 x64
             runner: ubuntu-22.04
             cmake_generator: Unix Makefiles
+            cmake_type: RelWithDebInfo
           - name: Ubuntu 22.04 ARM
             runner: ubuntu-22.04-arm
             cmake_generator: Ninja
+            cmake_type: RelWithDebInfo
           - name: Ubuntu 24.04 x64
             runner: ubuntu-24.04
             cmake_generator: Unix Makefiles
+            cmake_type: RelWithDebInfo
           - name: Ubuntu 24.04 ARM
             runner: ubuntu-24.04-arm
             cmake_generator: Ninja
+            cmake_type: RelWithDebInfo
           - name: macOS 14
             runner: macos-14
             cmake_generator: Xcode
+            cmake_type: RelWithDebInfo
           - name: Windows MSVC
             runner: windows-latest
             no_sudo: 1
             cmake_defines: -DCMAKE_C_COMPILER=cl.exe -DCMAKE_CXX_COMPILER=cl.exe
             cmake_generator: Ninja
+            cmake_type: RelWithDebInfo
 
     steps:
       - name: "Checkout openEMS-Project"
@@ -79,7 +85,7 @@ jobs:
           cmake --version
           mkdir build_cmake
           pushd build_cmake
-          cmake -G "${{ matrix.cmake_generator }}" -DCMAKE_INSTALL_PREFIX=${{ github.workspace }}/openems-install ${{ matrix.cmake_defines }}  ..
+          cmake -G "${{ matrix.cmake_generator }}" -DCMAKE_BUILD_TYPE=${{ matrix.cmake_type }} -DCMAKE_INSTALL_PREFIX=${{ github.workspace }}/openems-install ${{ matrix.cmake_defines }}  ..
 
       - name: "Building"
         working-directory: build_cmake
