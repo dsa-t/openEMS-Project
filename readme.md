@@ -4,9 +4,9 @@
 - Git
 - Visual Studio 2022 with CMake and Ninja
 
-- Execute commands in "Developer Command Prompt for VS 2022" or run this command in PowerShell:
+- Open PowerShell and execute this command to get the correct environment:
 ```powershell
-& 'C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\Tools\Launch-VsDevShell.ps1' -SkipAutomaticLocation
+& 'C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\Tools\Launch-VsDevShell.ps1' -SkipAutomaticLocation -Arch amd64
 ```
 
 ### Commands
