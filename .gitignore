@@ -3,6 +3,7 @@ tmp*
 *.so*
 .directory
 build/
+build-*/
 build_*.log
 localConfig.cmake
 *.tar.bz2
