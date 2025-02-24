@@ -16,17 +16,15 @@ git clone --recurse-submodules --shallow-submodules https://github.com/dsa-t/ope
 cd openEMS-Project
 git -C CSXCAD fetch --prune --unshallow --tags
 git -C openEMS fetch --prune --unshallow --tags
-mkdir build
-cd build
 
-mkdir Debug
-cd Debug
+mkdir build-Debug
+cd build-Debug
 cmake -GNinja -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=C:\Sim\Prefix ..
 cmake --build . -j 16
 cd ..
 
-mkdir Release
-cd Release
+mkdir build-Release
+cd build-Release
 cmake -GNinja -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_INSTALL_PREFIX=C:\Sim\Prefix ..
 cmake --build . -j 16
 ```
